@@ -5,43 +5,54 @@ function validateForm(){
   var correo = document.getElementById("input-email");
   var contraseña = document.getElementById("input-password");
   var opcion = document.getElementById("bici");
-  var vacio = opcion.options[opcion.selectedIndex].value;
+  var select = opcion.options[opcion.selectedIndex].value;
 
-  var expresion = /^[a-z][\w.-]+@\w[\w.-]+.[\w.-]*[a-z][a-z]$/i;
+  //var caracteresvalidos = /^[a-z][\w.-]+@\w[\w.-]+.[\w.-]*[a-z][a-z]$/i;
 
   //valido el nombre
-  if (nombre.value.length < 2 ){
+  function validaNombre(){
+  if (nombre.value.length < 2){
     alert("Tiene que escribir su nombre");
-    nombre.value.focus();
-    return 0;
+    return nombre;
   }
+} validaNombre();
 
   //valido el apellido
+  function validaApellido(){
   if (apellido.value.length < 2){
-    alert("Tiene que escribir su apellido");
-    apellido.value.focus();
+    alert("Tiene que escribir su apellido");;
     return 0;
   }
+} validaApellido();
 
   //valido el correo
-  if (!expresion.test(correo) && correo.value.length< 10){
+  function validaEmail(){
+    var crt = /\S+@\+\S+.\+S+/;
+  if (!crt.test(correo) && correo.value.length< 10){
       alert("Ingrese el formato correcto del correo");
-      correo.value.focus();
       return 0;
-  }
+    }
+} validaEmail();
 
   //valido la contraseña
-  if (contraseña.value.length<6){
-    alert("Ingrese una contraseña de minimo 6 caracteres");
-    contraseña.value.focus();
-    return 0;
-  }
+  function validaPass(){
+    if (contraseña.value.length<6){
+      alert("Ingrese una contraseña de minimo 6 caracteres");
+      return 0;
+    }
+
+  } validaPass()
 
   //valido el interés
-  if(vacio.value == "0"){
-    alert("Seleccione una opción")
-    return 0;
-  }
+  function validaOpciones(){
+    //var op = sel.options[sel.selectedIndex].text;
+    if(opcion.value == 0){
+      alert("Eliga una opción");}
+    else {
+      alert ("Usted a elegido: "+ select);
+    }
+  } validaOpciones()
+
 
       /*if(opcion.value == null || opcion.value == "") {
       alert("Porfavor, seleccione su color favorito");
